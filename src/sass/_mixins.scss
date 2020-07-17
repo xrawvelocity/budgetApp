@@ -1,13 +1,13 @@
 @mixin respond($breakpoint) {
   @if ($breakpoint == smallphone) {
-    @media only screen and (max-width: 400px) {
+    @media only screen and (max-width: 35em) {
       @content;
-    }
+    } //560px
   }
   @if ($breakpoint == phone) {
-    @media only screen and (max-width: 560px) {
+    @media only screen and (max-width: 44em) {
       @content;
-    }
+    } //600px?
   }
   @if ($breakpoint == tab-port) {
     @media only screen and (max-width: 65em) {
@@ -29,4 +29,11 @@
       @content;
     } //1800px
   }
+}
+
+@mixin centerFlex($direction, $justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
 }

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;1,500;1,700&family=Roboto&display=swap");
 html {
   padding: 0;
   margin: 0;
@@ -5,7 +6,9 @@ html {
 
 body {
   font-size: 62.5%;
-  background-color: #444; }
+  font-family: 'Roboto', sans-serif;
+  background-color: #161616;
+  color: #ddd; }
   @media only screen and (max-width: 100em) {
     body {
       font-size: 60%; } }
@@ -16,6 +19,36 @@ body {
   @media only screen and (max-width: 65em) {
     body {
       font-size: 50%; } }
-  @media only screen and (max-width: 560px) {
+  @media only screen and (max-width: 44em) {
     body {
       font-size: 40%; } }
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 5rem; }
+  .nav-logo {
+    position: absolute;
+    top: 0;
+    height: 6rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; }
+    .nav-logo-img {
+      height: 6rem;
+      width: 12rem;
+      object-fit: cover; }
+  .nav-links {
+    margin-right: 10%;
+    z-index: 1000; }
+  .nav-links > *, .nav-links > *:link, .nav-links > *:active, .nav-links > *:visited {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    margin-left: 3rem; }
+  .nav-links > *:hover {
+    color: #ccc; }

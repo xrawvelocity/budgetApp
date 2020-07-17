@@ -5,11 +5,14 @@ export default class Navigation extends Component {
     render() {
         return (
             <nav className="nav">
-                <Link to="/" className="nav-logo">
-                </Link>
+                <div className="nav-logo">
+                    <Link to="/">
+                        <img src="./images/pennykeepfull.png" alt="logo" className="nav-logo-img" />
+                    </Link>
+                </div>
                 <div className="nav-links">
                     <Link to="/signup">Sign Up</Link>
-                    <Link to="/login">Sign Up</Link>
+                    <Link to="/login">Log In</Link>
                 </div>
             </nav>
         )
