@@ -1,0 +1,21 @@
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+body {
+  font-size: 62.5%;
+  background-color: #444; }
+  @media only screen and (max-width: 100em) {
+    body {
+      font-size: 60%; } }
+  @media only screen and (max-width: 90em) {
+    body {
+      font-size: 56.25%;
+      overflow-y: visible !important; } }
+  @media only screen and (max-width: 65em) {
+    body {
+      font-size: 50%; } }
+  @media only screen and (max-width: 560px) {
+    body {
+      font-size: 40%; } }
