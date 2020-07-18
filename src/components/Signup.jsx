@@ -12,8 +12,7 @@ export default class Signup extends Component {
               type="email"
               autocapitalize="off"
               autocorrect="off"
-              name="MERGE0"
-              id="MERGE0"
+              name="email"
               size="25"
               required
             />
@@ -23,21 +22,21 @@ export default class Signup extends Component {
           </div>
 
           <div className="group">
-            <input type="password" name="MERGE1" id="MERGE1" size="25" required />
+            <input type="password" name="PW" size="25" required />
             <span className="highlight"></span>
             <span className="bar"></span>
             <label>Password</label>
           </div>
 
           <div className="group">
-            <input type="password" name="MERGE1" id="MERGE1" size="25" required />
+            <input type="password" name="confirmPW" size="25" required />
             <span className="highlight"></span>
             <span className="bar"></span>
             <label>Confirm Password</label>
           </div>
 
           <div>
-            <input className="btn" type="submit" name="submit" value="Sign Up" />
+            <input className="btn" type="submit" name="submit" value="Create Account" />
           </div>
 
         </form>

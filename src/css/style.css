@@ -96,11 +96,12 @@ body::-webkit-scrollbar-thumb {
   font-weight: 700;
   justify-content: center;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  text-align: center; }
 
 .landing-features {
   padding: 0 5%;
-  height: 40vh;
+  height: 45vh;
   background-color: #161616;
   display: flex;
   justify-content: space-around;
@@ -186,18 +187,21 @@ body::-webkit-scrollbar-thumb {
       margin-left: 1.6rem; }
   .nav-links {
     z-index: 1000; }
-  .nav-links > *, .nav-links > *:link, .nav-links > *:active, .nav-links > *:visited {
-    color: #ddd;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.6rem;
-    margin-left: 3rem;
-    transition: all 0.3s ease-out; }
-  .nav-links > *:hover {
-    color: #20bd67; }
+  .nav-links > * {
+    display: inline; }
+    .nav-links > *, .nav-links > *:link, .nav-links > *:active, .nav-links > *:visited {
+      color: #ddd;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.6rem;
+      margin-left: 3rem;
+      transition: all 0.3s ease-out; }
+    .nav-links > *:hover {
+      color: #20bd67;
+      cursor: pointer; }
 
 .form {
-  padding: 10rem 0 0;
+  padding: 5rem 0 0;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -206,9 +210,9 @@ body::-webkit-scrollbar-thumb {
 
 .title {
   color: white;
-  font-size: 30px;
+  font-size: 3rem;
   width: 100%;
-  margin-bottom: 75px;
+  margin-bottom: 4rem;
   text-align: center; }
 
 .btn,
@@ -226,7 +230,7 @@ body::-webkit-scrollbar-thumb {
   display: block;
   font-size: 1.6em;
   font-weight: bold;
-  margin: 1em auto;
+  margin: 0 auto;
   padding: 1rem 1.5rem;
   position: relative;
   text-transform: uppercase; }
@@ -262,10 +266,10 @@ body::-webkit-scrollbar-thumb {
 /* form starting stylings ------------------------------- */
 .group {
   position: relative;
-  margin-bottom: 65px; }
+  margin-bottom: 4rem; }
 
 input {
-  font-size: 18px;
+  font-size: 1.6rem;
   padding: 10px 10px 10px 5px;
   display: block;
   width: 100%;
@@ -278,7 +282,7 @@ input:focus {
 /* LABEL ======================================= */
 label {
   color: #999;
-  font-size: 18px;
+  font-size: 1.6rem;
   font-weight: normal;
   position: absolute;
   pointer-events: none;

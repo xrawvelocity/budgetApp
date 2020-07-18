@@ -78,6 +78,7 @@
   }
 
   &-links > * {
+      display: inline;
     &,
     &:link,
     &:active,
@@ -92,6 +93,7 @@
 
     &:hover {
       color: $green1;
+      cursor: pointer;
     }
   }
 }

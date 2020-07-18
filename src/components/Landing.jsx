@@ -23,7 +23,7 @@ export default class Landing extends Component {
           </div>
         </section>
         <section className="landing-description">
-          Budgeting tools like no other; visualize your spending and your
+          Budgeting tools like no others; visualize your spending and your
           savings with graphs
         </section>
         <section className="landing-features">
