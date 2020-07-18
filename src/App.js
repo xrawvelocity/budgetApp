@@ -5,6 +5,7 @@ import Profile from "./components/Profile";
 import Navigation from "./components/Navigation";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Landing from "./components/Landing";
 
 export default class App extends Component {
   render() {
@@ -12,7 +13,7 @@ export default class App extends Component {
       <div className="main">
         <Navigation />
         <Switch>
-          <Route exact path="/" render={(props) => <Home {...props} />} />
+          <Route exact path="/" render={(props) => <Landing {...props} />} />
 
           <Route
             exact
