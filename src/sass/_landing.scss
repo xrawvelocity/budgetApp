@@ -1,7 +1,7 @@
 .landing {
   &-hero {
     display: flex;
-    height: 80vh;
+    height: 70vh;
     width: 100%;
     margin-bottom: 2rem;
     justify-content: center;
@@ -11,9 +11,11 @@
       width: 50%;
       text-align: right;
       line-height: 2;
+      margin-bottom: 5rem;
 
       &-text {
         font-size: 3rem;
+        
       }
 
       &-btn {
@@ -23,7 +25,8 @@
         border: none;
         border-radius: 2px;
         font-size: 2rem;
-        margin-top: 2rem;
+        margin-top: 3rem;
+        margin-right: 5rem;
         padding: 1rem 1.5rem;
         transition: all 0.3s ease-out;
 
@@ -42,7 +45,7 @@
     }
 
     &-img {
-      margin: 0 5rem 0 5rem;
+      width: 50%;
 
       & img {
         height: 30rem;
@@ -59,8 +62,10 @@
     justify-content: center;
     display: flex;
     align-items: center;
+    
   }
   &-features {
+    padding: 0 5%;
     height: 40vh;
     background-color: #161616;
     display: flex;
