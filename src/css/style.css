@@ -6,7 +6,7 @@ html {
 
 body {
   font-size: 62.5%;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #161616;
   color: #ddd; }
   @media only screen and (max-width: 100em) {
@@ -23,9 +23,37 @@ body {
     body {
       font-size: 40%; } }
 
+a:focus,
+a:active {
+  outline: none; }
+
+::-moz-selection {
+  background-color: #20bd67;
+  color: #161616; }
+
+::selection {
+  background-color: #20bd67;
+  color: #161616; }
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #000; }
+
+body::-webkit-scrollbar {
+  width: 12px;
+  background-color: #000; }
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #20bd67; }
+
 .landing-hero {
   display: flex;
-  height: 70vh;
+  height: 80vh;
   width: 100%;
   margin-bottom: 2rem;
   justify-content: center;
@@ -45,7 +73,6 @@ body {
       border-radius: 2px;
       font-size: 2rem;
       margin-top: 3rem;
-      margin-right: 5rem;
       padding: 1rem 1.5rem;
       transition: all 0.3s ease-out; }
       .landing-hero-cta-btn, .landing-hero-cta-btn:link, .landing-hero-cta-btn:active, .landing-hero-cta-btn:visited {
@@ -56,7 +83,8 @@ body {
   .landing-hero-img {
     width: 50%; }
     .landing-hero-img img {
-      height: 30rem;
+      height: 28rem;
+      margin-left: 4rem;
       filter: hue-rotate(307deg); }
 
 .landing-description {
@@ -64,6 +92,8 @@ body {
   background-color: #fff;
   color: #161616;
   font-size: 2.6rem;
+  font-style: italic;
+  font-weight: 700;
   justify-content: center;
   display: flex;
   align-items: center; }
@@ -84,7 +114,8 @@ body {
     .landing-features-each > * {
       margin-bottom: 1rem; }
     .landing-features-each-img {
-      font-size: 3rem; }
+      font-size: 3rem;
+      color: #20bd67; }
     .landing-features-each-title {
       font-weight: 700;
       font-size: 2rem; }

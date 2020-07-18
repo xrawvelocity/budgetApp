@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartBar, faClock, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { faChartBar, faClock, faCheckCircle, faMoneyCheck, faMoneyBill, faCoins } from "@fortawesome/free-solid-svg-icons";
 
 export default class Landing extends Component {
   render() {
@@ -15,7 +15,7 @@ export default class Landing extends Component {
               easier.
             </h1>
             <Link to="/signup" className="landing-hero-cta-btn">
-              Create an account
+              Create an account &ndash; it's free
             </Link>
           </div>
           <div className="landing-hero-img">
@@ -29,17 +29,17 @@ export default class Landing extends Component {
         <section className="landing-features">
           <div className="landing-features-each">
               <div className="landing-features-each-img landing-features-each-img_1">
-                  <FontAwesomeIcon icon={faClock} />
+                  <FontAwesomeIcon icon={faCoins} />
               </div>
-              <div className="landing-features-each-title landing-features-each-title_1">Fast</div>
-              <div className="landing-features-each-text landing-features-each-text_1">Promised speed or w.e. idk too much about what to put here for now so this is just placeholder text</div>
+              <div className="landing-features-each-title landing-features-each-title_1">Free</div>
+              <div className="landing-features-each-text landing-features-each-text_1">Unlike other budgeting websites, we deliver free features that you would otherwise have to pay for</div>
           </div>
           <div className="landing-features-each">
               <div className="landing-features-each-img landing-features-each-img_2">
                   <FontAwesomeIcon icon={faChartBar} />
               </div>
               <div className="landing-features-each-title landing-features-each-title_2">Efficient</div>
-              <div className="landing-features-each-text landing-features-each-text_2">Promised speed or w.e. idk too much about what to put here for now so this is just placeholder text</div>
+              <div className="landing-features-each-text landing-features-each-text_2">With over 5 different charts, analyze your expenses and income using the charts of your choice</div>
           </div>
           <div className="landing-features-each">
               <div className="landing-features-each-img landing-features-each-img_3">
