@@ -46,7 +46,7 @@ export default class Landing extends Component {
                   <FontAwesomeIcon icon={faCheckCircle} />
               </div>
               <div className="landing-features-each-title landing-features-each-title_3">Simple</div>
-              <div className="landing-features-each-text landing-features-each-text_3">Promised speed or w.e. idk too much about what to put here for now so this is just placeholder text</div>
+              <div className="landing-features-each-text landing-features-each-text_3">This isn't another complicated budgeting website. In just 3 steps you can have your account ready!</div>
           </div>
         </section>
         <section className="landing-details"></section>
