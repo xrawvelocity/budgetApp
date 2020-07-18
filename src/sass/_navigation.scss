@@ -1,44 +1,99 @@
 .nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 5rem;
+
+  &-logo {
+    position: absolute;
+    top: 0;
+    height: 6rem;
+    width: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 5rem;
+    justify-content: center;
+    align-items: flex-start;
 
-    &-logo {
-        position: absolute;
-        top: 0;
-        height: 6rem;
-        width: 100%;
+    &-img {
+      height: 6rem;
+      width: 18rem;
+      object-fit: cover;
+    }
+
+    &-flex {
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        
-        &-img {
-            height: 6rem;
-            width: 12rem;
-            object-fit: cover;
-        }
-    }
+        align-items: center;
+        margin-top: .5rem;
 
-    &-links {
-        margin-right: 10%;
-        z-index: 1000;
-    }
-
-    &-links > * {
         &,
         &:link,
-        &:active,
-        &:visited {
-            color: #ddd;
+        &:visited,
+        &:active {
+            color: $green1;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 1.4rem;
-            margin-left: 3rem;
-        }
+            font-family: "Montserrat", sans-serif;
+            font-size: 1.2rem;
 
-        &:hover {
-            color: #ccc;
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
+
+    &-lines {
+      display: flex;
+
+      & > * {
+        width: 20px;
+        height: 40px;
+        margin-right: -5px;
+
+      }
+
+      &_1 {
+        background-color: $green1;
+        transform: skewX(-45deg) skewY(45deg);
+        z-index: 3;
+      }
+
+      &_2 {
+        background-color: $green2;
+        transform: skewX(-45deg) skewY(45deg);
+        z-index: 2;
+      }
+
+      &_3 {
+        background-color: $green3;
+        transform: skewX(-45deg) skewY(45deg);
+        z-index: 1;
+      }
+    }
+    
+    &-text {
+        margin-left: 1.6rem;
+    }
+
+  }
+
+  &-links {
+    margin-right: 10%;
+    z-index: 1000;
+  }
+
+  &-links > * {
+    &,
+    &:link,
+    &:active,
+    &:visited {
+      color: #ddd;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.4rem;
+      margin-left: 3rem;
+      transition: all 0.3s ease-out;
+    }
+
+    &:hover {
+      color: $green1;
+    }
+  }
 }

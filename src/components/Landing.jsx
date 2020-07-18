@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class Landing extends Component {
   render() {
@@ -10,7 +11,7 @@ export default class Landing extends Component {
               Keep every penny where it belongs! Budgeting has never been
               easier.
             </h1>
-            <button className="landing-hero-cta-btn">Sign Up</button>
+            <Link to="/signup" className="landing-hero-cta-btn">Create an account</Link>
           </div>
           <div className="landing-hero-img">
             <img src="./images/laptop.png" alt="laptop" />

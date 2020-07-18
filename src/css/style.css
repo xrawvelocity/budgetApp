@@ -26,14 +26,15 @@ body {
 .landing-hero {
   display: flex;
   height: 85vh;
+  width: 100%;
   justify-content: center;
   align-items: center; }
   .landing-hero-cta {
-    width: 30%;
+    width: 50%;
     text-align: right;
     line-height: 2; }
     .landing-hero-cta-text {
-      font-size: 2rem; }
+      font-size: 3rem; }
     .landing-hero-cta-btn {
       background-color: #20bd67;
       color: #111;
@@ -42,10 +43,17 @@ body {
       border-radius: 2px;
       font-size: 2rem;
       margin-top: 2rem;
-      padding: 1rem 1.5rem; }
-  .landing-hero-img img {
-    height: 25rem;
-    margin-left: 10rem; }
+      padding: 1rem 1.5rem;
+      transition: all 0.3s ease-out; }
+      .landing-hero-cta-btn, .landing-hero-cta-btn:link, .landing-hero-cta-btn:active, .landing-hero-cta-btn:visited {
+        text-decoration: none; }
+      .landing-hero-cta-btn:hover {
+        background-color: #199450;
+        cursor: pointer; }
+  .landing-hero-img {
+    margin: 0 5rem 0 10rem; }
+    .landing-hero-img img {
+      height: 30rem; }
 
 .nav {
   display: flex;
@@ -62,8 +70,39 @@ body {
     align-items: flex-start; }
     .nav-logo-img {
       height: 6rem;
-      width: 12rem;
+      width: 18rem;
       object-fit: cover; }
+    .nav-logo-flex {
+      display: flex;
+      align-items: center;
+      margin-top: .5rem; }
+      .nav-logo-flex, .nav-logo-flex:link, .nav-logo-flex:visited, .nav-logo-flex:active {
+        color: #20bd67;
+        text-decoration: none;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem; }
+        .nav-logo-flex:hover, .nav-logo-flex:link:hover, .nav-logo-flex:visited:hover, .nav-logo-flex:active:hover {
+          cursor: pointer; }
+    .nav-logo-lines {
+      display: flex; }
+      .nav-logo-lines > * {
+        width: 20px;
+        height: 40px;
+        margin-right: -5px; }
+      .nav-logo-lines_1 {
+        background-color: #20bd67;
+        transform: skewX(-45deg) skewY(45deg);
+        z-index: 3; }
+      .nav-logo-lines_2 {
+        background-color: #199450;
+        transform: skewX(-45deg) skewY(45deg);
+        z-index: 2; }
+      .nav-logo-lines_3 {
+        background-color: #11703c;
+        transform: skewX(-45deg) skewY(45deg);
+        z-index: 1; }
+    .nav-logo-text {
+      margin-left: 1.6rem; }
   .nav-links {
     margin-right: 10%;
     z-index: 1000; }
@@ -72,9 +111,10 @@ body {
     text-decoration: none;
     font-weight: 500;
     font-size: 1.4rem;
-    margin-left: 3rem; }
+    margin-left: 3rem;
+    transition: all 0.3s ease-out; }
   .nav-links > *:hover {
-    color: #ccc; }
+    color: #20bd67; }
 
 .form {
   padding: 10rem 0 0;
