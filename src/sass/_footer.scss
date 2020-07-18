@@ -1,0 +1,81 @@
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  height: auto;
+  align-items: center;
+  font-size: 1.4rem;
+  color: #fff;
+  padding: 3rem 0;
+
+  &-contact {
+    width: auto;
+    & > *:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+  }
+
+  & a {
+    color: rgba(10, 161, 231, 0.972);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-links {
+    display: flex;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+
+    @include respond(phone) {
+      width: 40%;
+    }
+
+    & > * {
+      font-size: 2.4rem;
+      transition: all 0.2s ease-out;
+      padding: 1rem;
+    }
+
+    &_facebook {
+      &,
+      &:link,
+      &:visited {
+        color: #3b5998;
+        margin-right: 5rem;
+
+        @include respond(phone) {
+          margin-right: 2rem;
+        }
+
+        &:hover {
+          cursor: pointer;
+          color: #2d4577;
+        }
+      }
+    }
+
+    &_instagram {
+      &,
+      &:link,
+      &:visited {
+        color: #e1306c;
+
+        margin-right: 5rem;
+
+        @include respond(phone) {
+          margin-right: 2rem;
+        }
+
+        &:hover {
+          cursor: pointer;
+          color: #c13584;
+        }
+      }
+    }
+
+    
+  }
+}

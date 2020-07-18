@@ -25,8 +25,9 @@ body {
 
 .landing-hero {
   display: flex;
-  height: 85vh;
+  height: 80vh;
   width: 100%;
+  margin-bottom: 2rem;
   justify-content: center;
   align-items: center; }
   .landing-hero-cta {
@@ -51,20 +52,66 @@ body {
         background-color: #199450;
         cursor: pointer; }
   .landing-hero-img {
-    margin: 0 5rem 0 10rem; }
+    margin: 0 5rem 0 5rem; }
     .landing-hero-img img {
-      height: 30rem; }
+      height: 30rem;
+      filter: hue-rotate(307deg); }
+
+.landing-description {
+  height: 30vh;
+  background-color: #fff;
+  color: #161616;
+  font-size: 2.6rem;
+  justify-content: center;
+  display: flex;
+  align-items: center; }
+
+.landing-features {
+  height: 40vh;
+  background-color: #161616;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+  .landing-features-each {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    font-size: 1.6rem; }
+    .landing-features-each > * {
+      margin-bottom: 1rem; }
+    .landing-features-each-img {
+      font-size: 3rem; }
+    .landing-features-each-title {
+      font-weight: 700;
+      font-size: 2rem; }
+    .landing-features-each-text {
+      text-align: center;
+      line-height: 1.5; }
+
+.landing-details {
+  height: 80vh;
+  background-color: #fff;
+  color: #161616; }
+
+.landing-testimonials {
+  height: 50vh;
+  background-color: #161616; }
+
+.landing-cta {
+  height: 50vh;
+  background-color: #fff;
+  color: #161616; }
 
 .nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  height: 5rem; }
+  height: 6rem;
+  margin: 0 10%; }
   .nav-logo {
-    position: absolute;
-    top: 0;
-    height: 6rem;
-    width: 100%;
+    height: auto;
+    width: 20%;
     display: flex;
     justify-content: center;
     align-items: flex-start; }
@@ -75,7 +122,7 @@ body {
     .nav-logo-flex {
       display: flex;
       align-items: center;
-      margin-top: .5rem; }
+      margin-top: 1rem; }
       .nav-logo-flex, .nav-logo-flex:link, .nav-logo-flex:visited, .nav-logo-flex:active {
         color: #20bd67;
         text-decoration: none;
@@ -104,13 +151,12 @@ body {
     .nav-logo-text {
       margin-left: 1.6rem; }
   .nav-links {
-    margin-right: 10%;
     z-index: 1000; }
   .nav-links > *, .nav-links > *:link, .nav-links > *:active, .nav-links > *:visited {
     color: #ddd;
     text-decoration: none;
     font-weight: 500;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     margin-left: 3rem;
     transition: all 0.3s ease-out; }
   .nav-links > *:hover {
@@ -286,3 +332,51 @@ input:focus ~ .highlight {
   to {
     width: 0;
     background: transparent; } }
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  height: auto;
+  align-items: center;
+  font-size: 1.4rem;
+  color: #fff;
+  padding: 3rem 0; }
+  .footer-contact {
+    width: auto; }
+    .footer-contact > *:not(:first-child) {
+      margin-top: 1.5rem; }
+  .footer a {
+    color: rgba(10, 161, 231, 0.972); }
+    .footer a:hover {
+      cursor: pointer; }
+  .footer-links {
+    display: flex;
+    width: 15%;
+    justify-content: center;
+    align-items: center; }
+    @media only screen and (max-width: 44em) {
+      .footer-links {
+        width: 40%; } }
+    .footer-links > * {
+      font-size: 2.4rem;
+      transition: all 0.2s ease-out;
+      padding: 1rem; }
+    .footer-links_facebook, .footer-links_facebook:link, .footer-links_facebook:visited {
+      color: #3b5998;
+      margin-right: 5rem; }
+      @media only screen and (max-width: 44em) {
+        .footer-links_facebook, .footer-links_facebook:link, .footer-links_facebook:visited {
+          margin-right: 2rem; } }
+      .footer-links_facebook:hover, .footer-links_facebook:link:hover, .footer-links_facebook:visited:hover {
+        cursor: pointer;
+        color: #2d4577; }
+    .footer-links_instagram, .footer-links_instagram:link, .footer-links_instagram:visited {
+      color: #e1306c;
+      margin-right: 5rem; }
+      @media only screen and (max-width: 44em) {
+        .footer-links_instagram, .footer-links_instagram:link, .footer-links_instagram:visited {
+          margin-right: 2rem; } }
+      .footer-links_instagram:hover, .footer-links_instagram:link:hover, .footer-links_instagram:visited:hover {
+        cursor: pointer;
+        color: #c13584; }
