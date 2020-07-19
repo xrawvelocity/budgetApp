@@ -12,44 +12,86 @@ export default class Home extends Component {
         type: "inc",
         description: "test",
         value: "123",
-        time: "7/18/2020, 11:05:37 PM"
+        time: "7/14/2020, 11:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
         value: "123",
-        time: "7/18/2020, 11:05:37 PM"
+        time: "7/15/2020, 11:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
         value: "123",
-        time: "7/18/2020, 11:05:37 PM"
+        time: "7/16/2020, 11:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
         value: "123",
-        time: "7/18/2020, 11:05:37 PM"
+        time: "5/18/2020, 11:05:37 PM",
       },
       {
         type: "inc",
         description: "test",
         value: "123",
-        time: "7/18/2020, 11:05:37 PM"
+        time: "6/18/2020, 11:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
         value: "123",
-        time: "7/18/2020, 11:05:37 PM"
+        time: "2/4/2020, 11:05:37 PM",
       },
       {
         type: "inc",
         description: "test",
         value: "123",
-        time: "7/18/2020, 11:05:37 PM"
+        time: "7/8/2020, 11:05:37 PM",
       },
+      {
+        type: "inc",
+        description: "test",
+        value: "123",
+        time: "7/8/2020, 1:05:37 PM",
+      },
+      {
+        type: "exp",
+        description: "test",
+        value: "123",
+        time: "7/18/2020, 11:05:37 PM",
+      },
+      {
+        type: "exp",
+        description: "test",
+        value: "123",
+        time: "7/1/2020, 11:05:37 PM",
+      },
+      {
+        type: "exp",
+        description: "test",
+        value: "123",
+        time: "7/12/2020, 11:05:37 PM",
+      },
+      {
+        type: "inc",
+        description: "test",
+        value: "123",
+        time: "7/19/2020, 11:05:37 PM",
+      },
+      {
+        type: "exp",
+        description: "test",
+        value: "123",
+        time: "7/11/2020, 11:05:37 PM",
+      },
+      {
+        type: "inc",
+        description: "test",
+        value: "123",
+        time: "7/11/2020, 11:05:37 PM",
+      }
     ],
   };
 
@@ -69,7 +111,7 @@ export default class Home extends Component {
           description: this.state.description,
           value:
             this.state.type === "inc" ? this.state.value : -this.state.value,
-          time: new Date().toLocaleString()
+          time: new Date().toLocaleString(),
         },
       ],
     });
@@ -82,11 +124,12 @@ export default class Home extends Component {
   };
 
   loadTransactions = () => {
-    return this.state.transactions.map((each) => {
+    return this.state.transactions.sort((b,a) => new Date(a.time) - new Date(b.time)).map((each) => {
       return (
         <div
           className={`home-transactions-each home-transactions-each_${each.type}`}
         >
+          <p className="home-transactions-each_date">{each.time.split(" ")[0].slice(0, -1)}</p>
           <h3 className="home-transactions-each_description">
             {each.description}
           </h3>
@@ -111,44 +154,55 @@ export default class Home extends Component {
   render() {
     return (
       <div className="home">
-        <div className="home-balance">
-          ${this.getBalance()}
-          {/* $####.## */}
-        </div>
-        <div className="home-add">
-          <div className="home-add__container">
-            <select
-              onChange={this.handleChange}
-              className="home-add__type"
-              name="type"
-              defaultValue="inc"
-              value={this.state.type}
-            >
-              <option value="inc">+</option>
-              <option value="exp">-</option>
-            </select>
-            <input
-              onChange={this.handleChange}
-              type="text"
-              value={this.state.description}
-              name="description"
-              className="home-add__description"
-              placeholder="Add description"
-            />
-            <input
-              onChange={this.handleChange}
-              type="number"
-              value={this.state.value}
-              name="value"
-              className="home-add__value"
-              placeholder="Value"
-            />
-            <button onClick={this.handleSubmit} className="home-add__btn">
-              <FontAwesomeIcon icon={faCheckCircle} />
-            </button>
+        <div className="home-left">
+          <div className="home-balance">
+            Total: ${this.getBalance()}
           </div>
+          <div className="home-add">
+            <div className="home-add__container">
+              <select
+                onChange={this.handleChange}
+                className="home-add__type"
+                name="type"
+                defaultValue="inc"
+                value={this.state.type}
+              >
+                <option value="inc">+</option>
+                <option value="exp">-</option>
+              </select>
+              <input
+                onChange={this.handleChange}
+                type="text"
+                value={this.state.description}
+                name="description"
+                className="home-add__description"
+                placeholder="Add description"
+              />
+              <input
+                onChange={this.handleChange}
+                type="number"
+                value={this.state.value}
+                name="value"
+                className="home-add__value"
+                placeholder="Value"
+              />
+              <button onClick={this.handleSubmit} className="home-add__btn">
+                <FontAwesomeIcon icon={faCheckCircle} />
+              </button>
+            </div>
+          </div>
+          <div className="home-transactions">{this.loadTransactions()}</div>
         </div>
-        <div className="home-transactions">{this.loadTransactions()}</div>
+        <div className="home-right">
+            <div className="home-chart_1"></div>
+            <div className="home-chart_2"></div>
+            <div className="home-chart_1"></div>
+            <div className="home-chart_2"></div>
+            <div className="home-chart_1"></div>
+            <div className="home-chart_2"></div>
+            <div className="home-chart_1"></div>
+            <div className="home-chart_2"></div>
+        </div>
       </div>
     );
   }

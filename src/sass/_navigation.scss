@@ -3,7 +3,10 @@
   justify-content: space-between;
   align-items: center;
   height: 6rem;
-  margin: 0 10%;
+  margin: 1rem 10%;
+  position: sticky;
+  top: 0;
+  z-index: 1000000;    
 
   &-logo {
     height: auto;
@@ -19,23 +22,23 @@
     }
 
     &-flex {
-        display: flex;
-        align-items: center;
-        margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
 
-        &,
-        &:link,
-        &:visited,
-        &:active {
-            color: $green1;
-            text-decoration: none;
-            font-family: "Montserrat", sans-serif;
-            font-size: 1.2rem;
+      &,
+      &:link,
+      &:visited,
+      &:active {
+        color: $green1;
+        text-decoration: none;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem;
 
-            &:hover {
-                cursor: pointer;
-            }
+        &:hover {
+          cursor: pointer;
         }
+      }
     }
 
     &-lines {
@@ -45,7 +48,6 @@
         width: 20px;
         height: 40px;
         margin-right: -5px;
-
       }
 
       &_1 {
@@ -66,11 +68,10 @@
         z-index: 1;
       }
     }
-    
-    &-text {
-        margin-left: 1.6rem;
-    }
 
+    &-text {
+      margin-left: 1.6rem;
+    }
   }
 
   &-links {
@@ -79,7 +80,8 @@
   }
 
   &-links > * {
-      display: inline;
+    display: inline;
+    
     &,
     &:link,
     &:active,
@@ -90,6 +92,7 @@
       font-size: 1.6rem;
       margin-left: 3rem;
       transition: all 0.3s ease-out;
+      
     }
 
     &:hover {

@@ -1,4 +1,42 @@
 .home {
+  display: flex;
+  justify-content: flex-end;
+  width: 99vw;
+
+  &-left {
+    width: 50%;
+    position: fixed;
+    left: 0;
+  }
+
+  &-right {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5rem;
+    margin-right: 10%;
+  }
+
+  &-chart {
+
+    &_1 {
+        width: 100%;
+        height: 20rem;
+        background-color: #fff;
+        margin-top: 3rem;
+    }
+
+    &_2 {
+        width: 20rem;
+        height: 20rem;
+        border-radius: 50%;
+        background-color: #ccc;
+        margin-top: 3rem;
+    }
+  }
+
   &-add {
     padding: 14px;
     background-color: $black;
@@ -45,7 +83,7 @@
       font-size: 35px;
       background: none;
       border: none;
-      color: $green2;
+      color: $green1;
       cursor: pointer;
       display: inline-block;
       vertical-align: middle;
@@ -54,7 +92,8 @@
       transition: all 0.3s ease-out;
 
       &:hover {
-        color: $green1;
+        filter: brightness(125%);
+        cursor: pointer;
       }
 
       &:active {
@@ -72,24 +111,44 @@
     &__description:focus,
     &__value:focus {
       outline: none;
-    //   box-shadow: 0 4px 0rem $green1;
+      //   box-shadow: 0 4px 0rem $green1;
     }
   }
 
   &-balance {
-      font-size: 1.6rem;
-      font-weight: 700;
-      text-align: center;
-      margin-top: 5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 5rem;
   }
 
   &-transactions {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 5rem auto;
-    width: 50%;
+    margin: 2rem auto;
+    width: 70%;
+    height: 50vh;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #000;
+    }
+
+    &::-webkit-scrollbar {
+      width: 12px;
+      background-color: #000;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: $green1;
+    }
 
     &-each {
       display: flex;
@@ -98,6 +157,7 @@
       width: 100%;
       background-color: rgba(#000, 0.3);
       font-size: 1.4rem;
+      border-bottom: 1.5px solid #333;
 
       &_inc {
         color: $green1;
