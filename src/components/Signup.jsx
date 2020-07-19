@@ -55,8 +55,7 @@ export default class Signup extends Component {
 
           <div>
             <input
-              className="input"
-              className="btn"
+              className="input btn"
               type="submit"
               name="submit"
               value="Create Account"
