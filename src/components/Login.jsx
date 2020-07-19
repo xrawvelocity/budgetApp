@@ -16,6 +16,7 @@ export default class Login extends Component {
 
           <div className="group">
             <input
+            className="input"
               type="email"
               autocapitalize="off"
               autocorrect="off"
@@ -25,18 +26,20 @@ export default class Login extends Component {
             />
             <span className="highlight"></span>
             <span className="bar"></span>
-            <label>Email</label>
+            <label className="label">Email</label>
           </div>
 
           <div className="group">
-            <input type="password" name="PW" size="25" required />
+            <input
+            className="input" type="password" name="PW" size="25" required />
             <span className="highlight"></span>
             <span className="bar"></span>
-            <label>Password</label>
+            <label className="label">Password</label>
           </div>
 
           <div>
-            <input className="btn" type="submit" name="submit" value="Log In" />
+            <input
+            className="input" className="btn" type="submit" name="submit" value="Log In" />
           </div>
         </form>
       </div>

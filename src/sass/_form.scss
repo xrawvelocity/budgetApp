@@ -75,7 +75,7 @@
   position: relative;
   margin-bottom: 4rem;
 }
-input {
+.input {
   font-size: 1.6rem;
   padding: 10px 10px 10px 5px;
   display: block;
@@ -83,12 +83,12 @@ input {
   border: none;
   border-bottom: 1px solid #757575;
 }
-input:focus {
+.input:focus {
   outline: none;
 }
 
 /* LABEL ======================================= */
-label {
+.label {
   color: #999;
   font-size: 1.6rem;
   font-weight: normal;
@@ -102,14 +102,14 @@ label {
 }
 
 /* active state */
-input:focus ~ label,
-input:valid ~ label {
+.input:focus ~ .label,
+.input:valid ~ .label {
   top: -40px;
   font-size: 20px;
   color: white;
 }
 
-input:placeholder-shown ~ label {
+.input:placeholder-shown ~ .label {
   color: red;
 }
 
@@ -139,10 +139,10 @@ input:placeholder-shown ~ label {
 }
 
 /* active state */
-input:focus ~ .bar:before,
-input:focus ~ .bar:after,
-input:hover ~ .bar:before,
-input:hover ~ .bar:after {
+.input:focus ~ .bar:before,
+.input:focus ~ .bar:after,
+.input:hover ~ .bar:before,
+.input:hover ~ .bar:after {
   width: 50%;
 }
 
@@ -158,7 +158,7 @@ input:hover ~ .bar:after {
 }
 
 /* active state */
-input:focus ~ .highlight {
+.input:focus ~ .highlight {
   -webkit-animation: inputHighlighter .4s ease;
   -moz-animation: inputHighlighter .4s ease;
   animation: inputHighlighter .4s ease;

@@ -1,0 +1,111 @@
+.home {
+  &-add {
+    padding: 14px;
+    background-color: $black;
+    margin-top: 3rem;
+
+    &__container {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    &__type {
+      width: 55px;
+      border: 1px solid #e7e7e7;
+      height: 44px;
+      font-size: 18px;
+      color: $black;
+      background-color: #fff;
+      margin-right: 10px;
+      font-weight: 300;
+      transition: all 0.3s;
+    }
+
+    &__description,
+    &__value {
+      border: 1px solid #e7e7e7;
+      background-color: #fff;
+      color: $black;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 12px 15px;
+      margin-right: 10px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    &__description {
+      width: 400px;
+    }
+    &__value {
+      width: 100px;
+    }
+
+    &__btn {
+      font-size: 35px;
+      background: none;
+      border: none;
+      color: $green2;
+      cursor: pointer;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1.1;
+      margin-left: 10px;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        color: $green1;
+      }
+
+      &:active {
+        transform: translateY(2px);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &__type:hover,
+    &__description:hover,
+    &__value:hover,
+    &__type:focus,
+    &__description:focus,
+    &__value:focus {
+      outline: none;
+    //   box-shadow: 0 4px 0rem $green1;
+    }
+  }
+
+  &-balance {
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 5rem;
+  }
+
+  &-transactions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem auto;
+    width: 50%;
+
+    &-each {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      background-color: rgba(#000, 0.3);
+      font-size: 1.4rem;
+
+      &_inc {
+        color: $green1;
+      }
+
+      &_exp {
+        color: #d22;
+      }
+    }
+  }
+}

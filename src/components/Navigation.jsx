@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export default class Navigation extends Component {
-  state = {
-    loggedIn: true,
-  };
+
   render() {
     return !localStorage.getItem("PennyKeepID") ? (
       <nav className="nav">
@@ -40,6 +38,7 @@ export default class Navigation extends Component {
           <div onClick={()=>{
               localStorage.removeItem("PennyKeepID");
               this.forceUpdate();
+              window.location.href = "/"
           }}>Log Out</div>
         </div>
       </nav>

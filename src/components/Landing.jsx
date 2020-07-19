@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartBar, faClock, faCheckCircle, faMoneyCheck, faMoneyBill, faCoins } from "@fortawesome/free-solid-svg-icons";
+import { faChartBar, faCheckCircle, faCoins } from "@fortawesome/free-solid-svg-icons";
 
 export default class Landing extends Component {
   render() {

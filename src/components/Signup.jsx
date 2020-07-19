@@ -1,14 +1,20 @@
 import React, { Component } from "react";
 
 export default class Signup extends Component {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    localStorage.setItem("PennyKeepID", "YES");
+    window.location.href = "/";
+  };
   render() {
     return (
       <div className="login">
-        <form className="form">
+        <form onSubmit={this.handleSubmit} className="form">
           <h2 className="title">Sign Up</h2>
 
           <div className="group">
             <input
+              className="input"
               type="email"
               autocapitalize="off"
               autocorrect="off"
@@ -18,27 +24,44 @@ export default class Signup extends Component {
             />
             <span className="highlight"></span>
             <span className="bar"></span>
-            <label>Email</label>
+            <label className="label">Email</label>
           </div>
 
           <div className="group">
-            <input type="password" name="PW" size="25" required />
+            <input
+              className="input"
+              type="password"
+              name="PW"
+              size="25"
+              required
+            />
             <span className="highlight"></span>
             <span className="bar"></span>
-            <label>Password</label>
+            <label className="label">Password</label>
           </div>
 
           <div className="group">
-            <input type="password" name="confirmPW" size="25" required />
+            <input
+              className="input"
+              type="password"
+              name="confirmPW"
+              size="25"
+              required
+            />
             <span className="highlight"></span>
             <span className="bar"></span>
-            <label>Confirm Password</label>
+            <label className="label">Confirm Password</label>
           </div>
 
           <div>
-            <input className="btn" type="submit" name="submit" value="Create Account" />
+            <input
+              className="input"
+              className="btn"
+              type="submit"
+              name="submit"
+              value="Create Account"
+            />
           </div>
-
         </form>
       </div>
     );
