@@ -10,7 +10,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
 } from "recharts";
 
 export default class Home extends Component {
@@ -281,15 +280,15 @@ export default class Home extends Component {
 }
 
 function CustomTooltip({ payload, label, active }) {
-    if (active) {
-      return (
-        <div className="custom-tooltip">
-          <p className="label">{`${label} : ${payload[0].value}`}</p>
-          <p className="intro">{(label)}</p>
-          <p className="desc">Anything you want can be displayed here.</p>
-        </div>
-      );
-    }
-  
-    return null;
+  if (active) {
+    return (
+      <div className="custom-tooltip">
+        <p className="label">{`${label} : ${payload[0].value}`}</p>
+        <p className="intro">{label}</p>
+        <p className="desc">Anything you want can be displayed here.</p>
+      </div>
+    );
   }
+
+  return null;
+}
