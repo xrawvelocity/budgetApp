@@ -127,7 +127,7 @@
     flex-direction: column;
     align-items: center;
     margin: 2rem auto;
-    width: 70%;
+    width: 75%;
     height: 50vh;
     overflow-y: scroll;
 
@@ -153,7 +153,7 @@
     &-each {
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: center;
       width: 100%;
       background-color: rgba(#000, 0.3);
       font-size: 1.4rem;
@@ -165,6 +165,19 @@
 
       &_exp {
         color: #d22;
+      }
+
+      &_date {
+        width: 20%;
+      }
+
+      &_description {
+        width: 50%;
+      }
+
+      &_value {
+        width: 20%;
+        text-align: right;
       }
     }
   }
