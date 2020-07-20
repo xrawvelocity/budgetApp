@@ -62,6 +62,7 @@ body::-webkit-scrollbar-thumb {
     left: 0; }
   .home-right {
     width: 40%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import {
-  VictoryBar,
-  VictoryChart,
-  VictoryAxis,
-  VictoryScatter,
-  VictoryLine,
-  VictoryTheme,
-} from "victory";
+  BarChart,
+  Bar,
+  Brush,
+  ReferenceLine,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
 
 export default class Home extends Component {
   state = {
@@ -19,7 +22,7 @@ export default class Home extends Component {
       {
         type: "inc",
         description: "test",
-        value: "123",
+        value: "1231",
         time: "7/14/2020, 11:05:37 PM",
       },
       {
@@ -31,7 +34,7 @@ export default class Home extends Component {
       {
         type: "exp",
         description: "test",
-        value: "123",
+        value: "1213",
         time: "7/16/2020, 11:05:37 PM",
       },
       {
@@ -43,31 +46,25 @@ export default class Home extends Component {
       {
         type: "inc",
         description: "test",
-        value: "123",
+        value: "1223",
         time: "6/18/2020, 11:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
         value: "123",
-        time: "2/4/2020, 11:05:37 PM",
+        time: "6/4/2020, 11:05:37 PM",
       },
       {
         type: "inc",
         description: "test",
-        value: "123",
+        value: "1923",
         time: "7/8/2020, 11:05:37 PM",
-      },
-      {
-        type: "inc",
-        description: "test",
-        value: "123",
-        time: "7/8/2020, 1:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
-        value: "123",
+        value: "1123",
         time: "7/18/2020, 11:05:37 PM",
       },
       {
@@ -85,13 +82,13 @@ export default class Home extends Component {
       {
         type: "inc",
         description: "test",
-        value: "123",
+        value: "23",
         time: "7/19/2020, 1:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
-        value: "123",
+        value: "1223",
         time: "7/11/2020, 11:05:37 PM",
       },
       {
@@ -99,6 +96,12 @@ export default class Home extends Component {
         description: "test",
         value: "123",
         time: "7/11/2020, 11:05:37 PM",
+      },
+      {
+        type: "inc",
+        description: "hi",
+        value: "420",
+        time: "7/20/2020, 11:05:37 AM",
       },
     ],
     chart: [],
@@ -109,17 +112,15 @@ export default class Home extends Component {
       chart: this.state.transactions
         .sort((a, b) => new Date(a.time) - new Date(b.time))
         .map((each) => {
-          return { x: each.time, y: each.type === "inc" ? each.value : -each.value };
+          return {
+            // x: new Date(each.time),
+            // y: each.type === "inc" ? 1 * each.value : -each.value,
+            label: each.time.split(" ")[0].slice(0, -1),
+            y: each.type === "inc" ? 1 * each.value : -each.value,
+            fill: `${each.type === "inc" ? "#20bd67" : "#d21"}`,
+          };
         }),
     });
-
-    console.log(
-      this.state.transactions
-        .sort((a, b) => new Date(a.time) - new Date(b.time))
-        .map((each) => {
-          return { x: each.time, y: each.value };
-        })
-    );
   };
 
   handleChange = async (e) => {
@@ -150,14 +151,17 @@ export default class Home extends Component {
     });
 
     await this.setState({
-      chart: [
-        ...this.state.chart,
-        this.state.transactions
-          .sort((a, b) => new Date(a.time) - new Date(b.time))
-          .map((each) => {
-            return { x: each.time.split(" ")[0].slice(0, -1), y: each.value };
-          }),
-      ],
+      chart: this.state.transactions
+        .sort((a, b) => new Date(a.time) - new Date(b.time))
+        .map((each) => {
+          return {
+            //     x: new Date(each.time),
+            //     y: each.type === "inc" ? 1 * each.value : -each.value,
+            label: each.time.split(" ")[0].slice(0, -1),
+            y: each.type === "inc" ? 1 * each.value : -each.value,
+            fill: `${each.type === "inc" ? "#20bd67" : "#d21"}`,
+          };
+        }),
     });
   };
   limitTitle = (title, limit = 28) => {
@@ -209,6 +213,7 @@ export default class Home extends Component {
   };
 
   render() {
+    console.log(this.state.chart);
     return (
       <div className="home">
         <div className="home-left">
@@ -249,28 +254,42 @@ export default class Home extends Component {
           <div className="home-transactions">{this.loadTransactions()}</div>
         </div>
         <div className="home-right">
-          <VictoryChart theme={VictoryTheme.material}>
-            <VictoryLine
-              animate={{
-                duration: 2000,
-                onLoad: { duration: 1000 },
-              }}
-              style={{
-                data: { stroke: "#c43a31" },
-                parent: { border: "1px solid #ccc" },
-              }}
-              //   data={[
-              //     { x: 1, y: 2 },
-              //     { x: 2, y: 3 },
-              //     { x: 3, y: 5 },
-              //     { x: 4, y: 4 },
-              //     { x: 5, y: 7 },
-              //   ]}
-              data={this.state.chart}
-            />
-          </VictoryChart>
+          <BarChart
+            className="home-chart"
+            width={700}
+            height={500}
+            data={this.state.chart}
+            margin={{
+              top: 10,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="label" />
+            <YAxis />
+            <Tooltip content={<CustomTooltip />} />
+            <ReferenceLine y={0} stroke="#000" />
+            <Brush dataKey="label" height={30} stroke="#11703c" />
+            <Bar dataKey="y" />
+          </BarChart>
         </div>
       </div>
     );
   }
 }
+
+function CustomTooltip({ payload, label, active }) {
+    if (active) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{`${label} : ${payload[0].value}`}</p>
+          <p className="intro">{(label)}</p>
+          <p className="desc">Anything you want can be displayed here.</p>
+        </div>
+      );
+    }
+  
+    return null;
+  }
