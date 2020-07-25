@@ -139,8 +139,6 @@ export default class Home extends Component {
         .sort((a, b) => new Date(a.time) - new Date(b.time))
         .map((each) => {
           return {
-            // x: new Date(each.time),
-            // y: each.type === "inc" ? 1 * each.value : -each.value,
             label: each.time.split(" ")[0].slice(0, -1),
             y: each.type === "inc" ? 1 * each.value : -each.value,
             description: each.description,
