@@ -8,8 +8,12 @@ import {
   ReferenceLine,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
+  PieChart,
+  Pie,
+  Legend,
+  Line,
+  LineChart,
 } from "recharts";
 
 export default class Home extends Component {
@@ -17,88 +21,111 @@ export default class Home extends Component {
     type: "inc",
     description: "",
     value: "",
+    category: "",
+    selected: "bar",
     transactions: [
       {
         type: "inc",
         description: "test",
+        category: "salary",
         value: "1231",
         time: "7/14/2020, 11:05:37 PM",
       },
       {
         type: "exp",
         description: "testing length of description yes ok",
+        category: "housing",
         value: "123",
         time: "7/15/2020, 11:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
+        category: "housing",
         value: "1213",
         time: "7/16/2020, 11:05:37 PM",
       },
       {
+        type: "inc",
+        description: "test",
+        category: "investing",
+        value: "1232",
+        time: "7/16/2020, 11:25:37 PM",
+      },
+      {
         type: "exp",
         description: "test",
+        category: "housing",
         value: "123",
         time: "5/18/2020, 11:05:37 PM",
       },
       {
         type: "inc",
         description: "test",
+        category: "salary",
         value: "1223",
         time: "6/18/2020, 11:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
+        category: "housing",
         value: "123",
         time: "6/4/2020, 11:05:37 PM",
       },
       {
         type: "inc",
         description: "test",
+        category: "saving",
         value: "1923",
         time: "7/8/2020, 11:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
+        category: "food",
         value: "1123",
         time: "7/18/2020, 11:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
+        category: "food",
         value: "123",
         time: "7/1/2020, 11:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
+        category: "food",
         value: "123",
         time: "7/12/2020, 11:05:37 PM",
       },
       {
         type: "inc",
         description: "test",
+        category: "investing",
         value: "23",
         time: "7/19/2020, 1:05:37 PM",
       },
       {
         type: "exp",
         description: "test",
+        category: "transportation",
         value: "1223",
         time: "7/11/2020, 11:05:37 PM",
       },
       {
         type: "inc",
         description: "test",
+        category: "housing",
         value: "123",
         time: "7/11/2020, 11:05:37 PM",
       },
       {
         type: "inc",
         description: "hi",
+        category: "housing",
         value: "420",
         time: "7/20/2020, 11:05:37 AM",
       },
@@ -116,6 +143,8 @@ export default class Home extends Component {
             // y: each.type === "inc" ? 1 * each.value : -each.value,
             label: each.time.split(" ")[0].slice(0, -1),
             y: each.type === "inc" ? 1 * each.value : -each.value,
+            description: each.description,
+            name: each.category,
             fill: `${each.type === "inc" ? "#20bd67" : "#d21"}`,
           };
         }),
@@ -136,6 +165,7 @@ export default class Home extends Component {
         {
           type: this.state.type,
           description: this.state.description,
+          category: this.state.category,
           value:
             this.state.type === "inc" ? this.state.value : -this.state.value,
           time: new Date().toLocaleString(),
@@ -147,6 +177,7 @@ export default class Home extends Component {
       type: "inc",
       description: "",
       value: "",
+      category: "",
     });
 
     await this.setState({
@@ -158,6 +189,8 @@ export default class Home extends Component {
             //     y: each.type === "inc" ? 1 * each.value : -each.value,
             label: each.time.split(" ")[0].slice(0, -1),
             y: each.type === "inc" ? 1 * each.value : -each.value,
+            description: each.description,
+            name: each.category,
             fill: `${each.type === "inc" ? "#20bd67" : "#d21"}`,
           };
         }),
@@ -194,6 +227,9 @@ export default class Home extends Component {
             <p className="home-transactions-each_value">
               {each.type === "inc" ? "+ " : "- "}${each.value}
             </p>
+            <p className="home-transactions-each_category">
+              {each.category}
+            </p>
           </div>
         );
       });
@@ -209,6 +245,24 @@ export default class Home extends Component {
     } else {
       return 0;
     }
+  };
+
+  getExpensesAndIncomes = () => {
+    return this.state.transactions
+      .sort((a, b) => new Date(a.time) - new Date(b.time))
+      .map((each) => {
+        if (each.type === "exp") {
+          return {
+            expense: each.value,
+            date: each.time.split(" ")[0].slice(0, -1),
+          };
+        } else if (each.type === "inc") {
+          return {
+            income: each.value,
+            date: each.time.split(" ")[0].slice(0, -1),
+          };
+        }
+      });
   };
 
   render() {
@@ -245,6 +299,28 @@ export default class Home extends Component {
                 className="home-add__value"
                 placeholder="Value"
               />
+              <select
+                onChange={this.handleChange}
+                className="home-add__category"
+                name="category"
+                value={this.state.category}
+              >
+                <option value="">Select Category</option>
+                <option value="salary">Salary</option>
+                <option value="check">Check</option>
+                <option value="housing">Housing</option>
+                <option value="transportation">Transportation</option>
+                <option value="food">Food</option>
+                <option value="utilities">Utilities</option>
+                <option value="insurance">Insurance</option>
+                <option value="medical">Medical</option>
+                <option value="saving">Saving</option>
+                <option value="investing">Investing</option>
+                <option value="debt">Debt</option>
+                <option value="personal">Personal</option>
+                <option value="recreation">Recreation</option>
+                <option value="misc">Miscellaneous</option>
+              </select>
               <button onClick={this.handleSubmit} className="home-add__btn">
                 <FontAwesomeIcon icon={faCheckCircle} />
               </button>
@@ -253,26 +329,117 @@ export default class Home extends Component {
           <div className="home-transactions">{this.loadTransactions()}</div>
         </div>
         <div className="home-right">
-          <BarChart
-            className="home-chart"
-            width={700}
-            height={500}
-            data={this.state.chart}
-            margin={{
-              top: 10,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="label" />
-            <YAxis />
-            <Tooltip content={<CustomTooltip />} />
-            <ReferenceLine y={0} stroke="#000" />
-            <Brush dataKey="label" height={30} stroke="#11703c" />
-            <Bar dataKey="y" />
-          </BarChart>
+          <div className="home-right-buttons">
+            <button
+              className={
+                this.state.selected === "bar"
+                  ? "home-right-buttons_selected"
+                  : ""
+              }
+              onClick={() => {
+                this.setState({
+                  selected: "bar",
+                });
+              }}
+            >
+              Bar Chart
+            </button>
+            <button
+              className={
+                this.state.selected === "pie"
+                  ? "home-right-buttons_selected"
+                  : ""
+              }
+              onClick={() => {
+                this.setState({
+                  selected: "pie",
+                });
+              }}
+            >
+              Pie Chart
+            </button>
+            <button
+              className={
+                this.state.selected === "line"
+                  ? "home-right-buttons_selected"
+                  : ""
+              }
+              onClick={() => {
+                this.setState({
+                  selected: "line",
+                });
+              }}
+            >
+              Line Chart
+            </button>
+          </div>
+          {this.state.selected === "bar" && (
+            <BarChart
+              className="home-chart"
+              width={700}
+              height={700}
+              data={this.state.chart}
+              margin={{
+                top: 130,
+                right: 30,
+                left: 20,
+                bottom: 65,
+              }}
+            >
+              <XAxis dataKey="label" />
+              <YAxis />
+              <Tooltip content={<CustomTooltip />} />
+              <ReferenceLine y={0} stroke="#000" />
+              <Brush dataKey="label" height={30} stroke="#11703c" />
+              <Bar dataKey="y" />
+            </BarChart>
+          )}
+          {this.state.selected === "pie" && (
+            <PieChart width={600} height={600}>
+              <Pie
+                dataKey="y"
+                isAnimationActive={true}
+                data={this.state.chart}
+                cx={300}
+                cy={300}
+                outerRadius={160}
+                fill="fill"
+                label
+              />
+
+              <Tooltip content={<CustomTooltip />} />
+            </PieChart>
+          )}
+          {this.state.selected === "line" && (
+            <LineChart
+              width={500}
+              height={500}
+              data={this.getExpensesAndIncomes()}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <XAxis dataKey="date" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line
+                dot={{ stroke: "red", strokeWidth: 2 }}
+                type="monotone"
+                dataKey="income"
+                stroke="#20bd67"
+              />
+              <Line
+                dot={{ stroke: "red", strokeWidth: 2 }}
+                type="monotone"
+                dataKey="expense"
+                stroke="#d22"
+              />
+            </LineChart>
+          )}
         </div>
       </div>
     );
@@ -281,11 +448,18 @@ export default class Home extends Component {
 
 function CustomTooltip({ payload, label, active }) {
   if (active) {
+    let data = payload[0];
+    console.log("data", data);
+    var formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+
     return (
       <div className="custom-tooltip">
-        <p className="label">{`${label} : ${payload[0].value}`}</p>
-        <p className="intro">{label}</p>
-        <p className="desc">Anything you want can be displayed here.</p>
+        <p>{formatter.format(data.value)}</p>
+        <p>{label}</p>
+        <p>{data.payload.description}</p>
       </div>
     );
   }
