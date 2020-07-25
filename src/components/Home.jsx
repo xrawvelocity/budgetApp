@@ -131,6 +131,7 @@ export default class Home extends Component {
       },
     ],
     chart: [],
+    pie: [],
   };
 
   componentDidMount = async () => {
