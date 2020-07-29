@@ -1,0 +1,105 @@
+[{
+    "type": "inc",
+    "description": "test",
+    "category": "salary",
+    "value": "1231",
+    "time": "7/14/2020, 11:05:37 PM"
+  },
+  {
+    "type": "exp",
+    "description": "testing length of description yes ok",
+    "category": "housing",
+    "value": "123",
+    "time": "7/15/2020, 11:05:37 PM"
+  },
+  {
+    "type": "exp",
+    "description": "test",
+    "category": "housing",
+    "value": "1213",
+    "time": "7/16/2020, 11:05:37 PM"
+  },
+  {
+    "type": "inc",
+    "description": "test",
+    "category": "investing",
+    "value": "1232",
+    "time": "7/16/2020, 11:25:37 PM"
+  },
+  {
+    "type": "exp",
+    "description": "test",
+    "category": "housing",
+    "value": "123",
+    "time": "5/18/2020, 11:05:37 PM"
+  },
+  {
+    "type": "inc",
+    "description": "test",
+    "category": "salary",
+    "value": "1223",
+    "time": "6/18/2020, 11:05:37 PM"
+  },
+  {
+    "type": "exp",
+    "description": "test",
+    "category": "housing",
+    "value": "123",
+    "time": "6/4/2020, 11:05:37 PM"
+  },
+  {
+    "type": "inc",
+    "description": "test",
+    "category": "saving",
+    "value": "1923",
+    "time": "7/8/2020, 11:05:37 PM"
+  },
+  {
+    "type": "exp",
+    "description": "test",
+    "category": "food",
+    "value": "1123",
+    "time": "7/18/2020, 11:05:37 PM"
+  },
+  {
+    "type": "exp",
+    "description": "test",
+    "category": "food",
+    "value": "123",
+    "time": "7/1/2020, 11:05:37 PM"
+  },
+  {
+    "type": "exp",
+    "description": "test",
+    "category": "food",
+    "value": "123",
+    "time": "7/12/2020, 11:05:37 PM"
+  },
+  {
+    "type": "inc",
+    "description": "test",
+    "category": "investing",
+    "value": "23",
+    "time": "7/19/2020, 1:05:37 PM"
+  },
+  {
+    "type": "exp",
+    "description": "test",
+    "category": "transportation",
+    "value": "1223",
+    "time": "7/11/2020, 11:05:37 PM"
+  },
+  {
+    "type": "inc",
+    "description": "test",
+    "category": "housing",
+    "value": "123",
+    "time": "7/11/2020, 11:05:37 PM"
+  },
+  {
+    "type": "inc",
+    "description": "hi",
+    "category": "housing",
+    "value": "420",
+    "time": "7/20/2020, 11:05:37 AM"
+  }]

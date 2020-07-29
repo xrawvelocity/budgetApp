@@ -23,133 +23,41 @@ export default class Home extends Component {
     value: "",
     category: "",
     selected: "bar",
-    transactions: [
-      {
-        type: "inc",
-        description: "test",
-        category: "salary",
-        value: "1231",
-        time: "7/14/2020, 11:05:37 PM",
-      },
-      {
-        type: "exp",
-        description: "testing length of description yes ok",
-        category: "housing",
-        value: "123",
-        time: "7/15/2020, 11:05:37 PM",
-      },
-      {
-        type: "exp",
-        description: "test",
-        category: "housing",
-        value: "1213",
-        time: "7/16/2020, 11:05:37 PM",
-      },
-      {
-        type: "inc",
-        description: "test",
-        category: "investing",
-        value: "1232",
-        time: "7/16/2020, 11:25:37 PM",
-      },
-      {
-        type: "exp",
-        description: "test",
-        category: "housing",
-        value: "123",
-        time: "5/18/2020, 11:05:37 PM",
-      },
-      {
-        type: "inc",
-        description: "test",
-        category: "salary",
-        value: "1223",
-        time: "6/18/2020, 11:05:37 PM",
-      },
-      {
-        type: "exp",
-        description: "test",
-        category: "housing",
-        value: "123",
-        time: "6/4/2020, 11:05:37 PM",
-      },
-      {
-        type: "inc",
-        description: "test",
-        category: "saving",
-        value: "1923",
-        time: "7/8/2020, 11:05:37 PM",
-      },
-      {
-        type: "exp",
-        description: "test",
-        category: "food",
-        value: "1123",
-        time: "7/18/2020, 11:05:37 PM",
-      },
-      {
-        type: "exp",
-        description: "test",
-        category: "food",
-        value: "123",
-        time: "7/1/2020, 11:05:37 PM",
-      },
-      {
-        type: "exp",
-        description: "test",
-        category: "food",
-        value: "123",
-        time: "7/12/2020, 11:05:37 PM",
-      },
-      {
-        type: "inc",
-        description: "test",
-        category: "investing",
-        value: "23",
-        time: "7/19/2020, 1:05:37 PM",
-      },
-      {
-        type: "exp",
-        description: "test",
-        category: "transportation",
-        value: "1223",
-        time: "7/11/2020, 11:05:37 PM",
-      },
-      {
-        type: "inc",
-        description: "test",
-        category: "housing",
-        value: "123",
-        time: "7/11/2020, 11:05:37 PM",
-      },
-      {
-        type: "inc",
-        description: "hi",
-        category: "housing",
-        value: "420",
-        time: "7/20/2020, 11:05:37 AM",
-      },
-    ],
     chart: [],
     pie: [],
   };
 
   componentDidMount = async () => {
-    await this.setState({
-      chart: this.state.transactions
-        .sort((a, b) => new Date(a.time) - new Date(b.time))
-        .map((each) => {
-          return {
-            label: each.time.split(" ")[0].slice(0, -1),
-            y: each.type === "inc" ? 1 * each.value : -each.value,
-            description: each.description,
-            name: each.category,
-            fill: `${each.type === "inc" ? "#20bd67" : "#d21"}`,
-          };
-        }),
-    });
+    if (this.props.transactions) {
+      await this.setState({
+        chart: this.props.transactions
+          // .sort((a, b) => new Date(a.transactionContent.time) - new Date(b.transactionContent.time))
+          .map((each) => {
+            return {
+              label: each.transactionContent.time.split(" ")[0].slice(0, -1),
+              y:
+                each.transactionContent.type === "inc"
+                  ? 1 * each.transactionContent.value
+                  : -each.transactionContent.value,
+              description: each.transactionContent.description,
+              name: each.transactionContent.category,
+              fill: `${
+                each.transactionContent.type === "inc" ? "#20bd67" : "#d21"
+              }`,
+            };
+          }),
+      });
+
+      console.log("state", "-", this.state);
+      console.log("props", "-", this.props.transactions);
+    }
   };
 
+  getChartData = () => {
+    return this.props.transactions.map(each => {
+      console.log(each)
+    })
+  }
   handleChange = async (e) => {
     await this.setState({
       [e.target.name]: e.target.value,
@@ -160,7 +68,7 @@ export default class Home extends Component {
   handleSubmit = async () => {
     await this.setState({
       transactions: [
-        ...this.state.transactions,
+        ...this.props.transactions,
         {
           type: this.state.type,
           description: this.state.description,
@@ -172,6 +80,14 @@ export default class Home extends Component {
       ],
     });
 
+    this.props.addTransaction({
+      type: this.state.type,
+      description: this.state.description,
+      category: this.state.category,
+      value: this.state.type === "inc" ? this.state.value : -this.state.value,
+      time: new Date().toLocaleString(),
+    });
+
     this.setState({
       type: "inc",
       description: "",
@@ -180,17 +96,22 @@ export default class Home extends Component {
     });
 
     await this.setState({
-      chart: this.state.transactions
+      chart: this.props.transactions
         .sort((a, b) => new Date(a.time) - new Date(b.time))
         .map((each) => {
           return {
-            //     x: new Date(each.time),
-            //     y: each.type === "inc" ? 1 * each.value : -each.value,
-            label: each.time.split(" ")[0].slice(0, -1),
-            y: each.type === "inc" ? 1 * each.value : -each.value,
-            description: each.description,
-            name: each.category,
-            fill: `${each.type === "inc" ? "#20bd67" : "#d21"}`,
+            //     x: new Date(each.transactionContent.time),
+            //     y: each.transactionContent.type === "inc" ? 1 * each.transactionContent.value : -each.transactionContent.value,
+            label: each.transactionContent.time.split(" ")[0].slice(0, -1),
+            y:
+              each.transactionContent.type === "inc"
+                ? 1 * each.transactionContent.value
+                : -each.transactionContent.value,
+            description: each.transactionContent.description,
+            name: each.transactionContent.category,
+            fill: `${
+              each.transactionContent.type === "inc" ? "#20bd67" : "#d21"
+            }`,
           };
         }),
     });
@@ -210,24 +131,25 @@ export default class Home extends Component {
   };
 
   loadTransactions = () => {
-    return this.state.transactions
+    return this.props.transactions
       .sort((b, a) => new Date(a.time) - new Date(b.time))
       .map((each) => {
         return (
           <div
-            className={`home-transactions-each home-transactions-each_${each.type}`}
+            className={`home-transactions-each home-transactions-each_${each.transactionContent.type}`}
           >
             <p className="home-transactions-each_date">
-              {each.time.split(" ")[0].slice(0, -1)}
+              {each.transactionContent.time.split(" ")[0].slice(0, -1)}
             </p>
             <h3 className="home-transactions-each_description">
-              {this.limitTitle(each.description)}
+              {this.limitTitle(each.transactionContent.description)}
             </h3>
             <p className="home-transactions-each_value">
-              {each.type === "inc" ? "+ " : "- "}${each.value}
+              {each.transactionContent.type === "inc" ? "+ " : "- "}$
+              {each.transactionContent.value}
             </p>
             <p className="home-transactions-each_category">
-              {each.category}
+              {each.transactionContent.category}
             </p>
           </div>
         );
@@ -236,9 +158,9 @@ export default class Home extends Component {
 
   getBalance = () => {
     let sum = 0;
-    if (this.state.transactions.length > 0) {
-      this.state.transactions.forEach((each) => {
-        sum += Number(each.value);
+    if (this.props.transactions.length > 0) {
+      this.props.transactions.forEach((each) => {
+        sum += Number(each.transactionContent.value);
       });
       return sum;
     } else {
@@ -247,25 +169,25 @@ export default class Home extends Component {
   };
 
   getExpensesAndIncomes = () => {
-    return this.state.transactions
+    return this.props.transactions
       .sort((a, b) => new Date(a.time) - new Date(b.time))
       .map((each) => {
-        if (each.type === "exp") {
+        if (each.transactionContent.type === "exp") {
           return {
-            expense: each.value,
-            date: each.time.split(" ")[0].slice(0, -1),
+            expense: each.transactionContent.value,
+            date: each.transactionContent.time.split(" ")[0].slice(0, -1),
           };
-        } else if (each.type === "inc") {
+        } else if (each.transactionContent.type === "inc") {
           return {
-            income: each.value,
-            date: each.time.split(" ")[0].slice(0, -1),
+            income: each.transactionContent.value,
+            date: each.transactionContent.time.split(" ")[0].slice(0, -1),
           };
         }
       });
   };
 
   render() {
-    console.log(this.state.chart);
+    this.getChartData();
     return (
       <div className="home">
         <div className="home-left">
@@ -387,7 +309,7 @@ export default class Home extends Component {
             >
               <XAxis dataKey="label" />
               <YAxis />
-              <Tooltip content={<CustomTooltip />} />
+              {/* <Tooltip content={<CustomTooltip />} /> */}
               <ReferenceLine y={0} stroke="#000" />
               <Brush dataKey="label" height={30} stroke="#11703c" />
               <Bar dataKey="y" />
@@ -448,7 +370,6 @@ export default class Home extends Component {
 function CustomTooltip({ payload, label, active }) {
   if (active) {
     let data = payload[0];
-    console.log("data", data);
     var formatter = new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
